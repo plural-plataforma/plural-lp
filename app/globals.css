@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
+/* ─── Plural Plataforma – Design Tokens ─────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primária (teal) */
+  --color-primary:          #276678;
+  --color-primary-light:    #3a8fa5;
+  --color-primary-dark:     #1b4a57;
+  --color-primary-foreground: #ffffff;
+
+  /* Âmbar (logo / accent) */
+  --color-amber:            #FFBE33;
+  --color-amber-light:      #FFD06B;
+  --color-amber-dark:       #D99C1A;
+
+  /* Roxo / Lavanda (accent secundário) */
+  --color-purple:           #A786B6;
+  --color-purple-light:     #C4AED1;
+  --color-purple-dark:      #7D5F94;
+
+  /* Semânticas */
+  --color-success:          #28a745;
+  --color-danger:           #FF0000;
+
+  /* Neutros */
+  --color-background:       #ebebeb;
+  --color-foreground:       #171717;
+  --color-muted:            #f4f4f5;
+  --color-muted-foreground: #9CA3AF;
+  --color-placeholder:      #ADAEBC;
+  --color-border:           #e2e8f0;
+  --color-gray:             #D9D9D9;
+
+  /* Tipografia */
+  --font-sans: "Nunito", sans-serif;
+  --font-body: "Lato", sans-serif;
+
+  /* Raios */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.5rem;
+
+  /* Sombras */
+  --shadow-card:     0 2px 8px 0 rgb(0 0 0 / 0.08);
+  --shadow-elevated: 0 8px 24px 0 rgb(0 0 0 / 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary:           var(--color-primary);
+  --color-primary-light:     var(--color-primary-light);
+  --color-primary-dark:      var(--color-primary-dark);
+  --color-primary-foreground: var(--color-primary-foreground);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-amber:             var(--color-amber);
+  --color-amber-light:       var(--color-amber-light);
+  --color-amber-dark:        var(--color-amber-dark);
+
+  --color-purple:            var(--color-purple);
+  --color-purple-light:      var(--color-purple-light);
+  --color-purple-dark:       var(--color-purple-dark);
+
+  --color-success:           var(--color-success);
+  --color-danger:            var(--color-danger);
+
+  --color-background:        var(--color-background);
+  --color-foreground:        var(--color-foreground);
+  --color-muted:             var(--color-muted);
+  --color-muted-foreground:  var(--color-muted-foreground);
+  --color-placeholder:       var(--color-placeholder);
+  --color-border:            var(--color-border);
+  --color-gray:              var(--color-gray);
+
+  --font-sans:               var(--font-sans);
+  --font-body:               var(--font-body);
+
+  --radius-sm:               var(--radius-sm);
+  --radius-md:               var(--radius-md);
+  --radius-lg:               var(--radius-lg);
+  --radius-xl:               var(--radius-xl);
+  --radius-2xl:              var(--radius-2xl);
+
+  --shadow-card:             var(--shadow-card);
+  --shadow-elevated:         var(--shadow-elevated);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* ─── Ticker animation ──────────────────────────────────────────────────── */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@theme inline {
+  --animate-ticker: ticker 20s linear infinite;
+}
+
+.animate-ticker {
+  animation: var(--animate-ticker);
+}
+
+/* ─── Scroll / entrance animations ─────────────────────────────────────── */
+@keyframes ai-fade-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes ai-fade-down {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+@keyframes ai-fade-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes ai-fade-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes ai-scale {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes ai-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Hero load animations (CSS-only, above the fold) */
+.hero-badge  { animation: ai-fade-down  0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both; }
+.hero-h1     { animation: ai-fade-up    0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+.hero-sub    { animation: ai-fade-up    0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
+.hero-list   { animation: ai-fade-up    0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both; }
+.hero-pills  { animation: ai-fade-up    0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both; }
+.hero-cta    { animation: ai-scale      0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both; }
+.hero-trust  { animation: ai-fade       0.6s ease                           0.70s both; }
+.hero-photo  { animation: ai-fade-right 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.10s both; }
