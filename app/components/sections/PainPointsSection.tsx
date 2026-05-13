@@ -38,7 +38,7 @@ export function PainPointsSection() {
           <h2 className="text-3xl font-black leading-[1.1] text-[#A786B6] md:text-[3.2rem]">
             Você sente que passa mais tempo
             <br className="hidden md:block" />
-            <span className="text-[#276678]"> organizando papéis</span> do que
+            <span className="text-[#276678]"> organizando papéis</span> do que{" "}
             <br className="hidden md:block" />
             acompanhando seus alunos?
           </h2>
@@ -85,7 +85,7 @@ export function PainPointsSection() {
         {/* Fechamento */}
         <AnimateIn className="mb-16 text-center" direction="fade">
           <p className="text-lg font-semibold leading-relaxed text-[#276678]">
-            Se você é professora do AEE, você conhece essa realidade.
+            Se você é professora do AEE, você conhece essa realidade.{" "}
             <br className="hidden md:block" />
             E foi exatamente por viver isso todos os dias que nasceu a{" "}
             <strong className="font-black text-[#A786B6]">Plural</strong>.

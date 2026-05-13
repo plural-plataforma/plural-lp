@@ -36,10 +36,10 @@ export function ClosingCTASection() {
         {/* Headline */}
         <AnimateIn direction="up" delay={50}>
           <p className="mb-2 text-3xl font-black text-white md:text-4xl">
-            A decisão é sua.
+            A decisão é sua
           </p>
           <p className="mb-12 text-xl font-bold text-[#FFBE33] md:text-2xl">
-            Mas a transformação começa agora.
+            Mas a transformação começa agora
           </p>
         </AnimateIn>
 

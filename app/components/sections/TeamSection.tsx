@@ -141,7 +141,6 @@ export function TeamSection() {
                 className="absolute -bottom-0.5 left-0 right-0 h-2 rounded-full bg-[#FFBE33]/45"
               />
             </span>
-            .
           </p>
         </AnimateIn>
       </div>

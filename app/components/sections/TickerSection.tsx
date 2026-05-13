@@ -3,7 +3,7 @@ const items = Array(10).fill("ENTRAR NA PLATAFORMA");
 export function TickerSection() {
   return (
     <div className="overflow-hidden bg-[#276678] py-5">
-      <div className="flex animate-ticker whitespace-nowrap">
+      <div className="flex w-max animate-ticker whitespace-nowrap">
         {[...items, ...items].map((item, i) => (
           <span
             key={i}

@@ -194,13 +194,15 @@ export function Header() {
           }}
         >
           <div className="flex items-center justify-between px-5 pb-2 pt-[max(0.75rem,env(safe-area-inset-top))]">
-            <Image
-              src="/plural-logo-plus.png"
-              alt="Plural Plataforma"
-              width={120}
-              height={40}
-              className="h-8 w-auto drop-shadow-md"
-            />
+            <div className="inline-flex items-center rounded-2xl bg-white/95 px-2.5 py-1.5 shadow-[0_6px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/70">
+              <Image
+                src="/plural-logo-plus.png"
+                alt="Plural Plataforma"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+              />
+            </div>
             <button
               type="button"
               aria-label="Fechar menu"
