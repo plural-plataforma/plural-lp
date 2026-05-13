@@ -169,11 +169,6 @@ export function HeroSection() {
             </a>
           </div>
 
-          {/* Trust line */}
-          <p className="hero-trust text-xs text-[#276678]/50">
-            Tudo em um só lugar. Comece grátis, sem cartão de crédito.
-          </p>
-
         </div>
 
       </div>

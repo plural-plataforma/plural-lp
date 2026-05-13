@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { Icon } from "@phosphor-icons/react";
 import {
   ChartLineUp,
@@ -92,76 +91,6 @@ export function PainPointsSection() {
             <strong className="font-black text-[#A786B6]">Plural</strong>.
           </p>
         </AnimateIn>
-
-        {/* Banner Morgana */}
-        <AnimateIn direction="scale">
-          <div className="mb-14 overflow-hidden rounded-[32px] bg-[#ebebeb]">
-            <div className="flex flex-col items-center px-10 py-10">
-              <div className="flex w-full max-w-[768px] flex-col mx-auto">
-                <span className="text-left text-3xl font-black leading-[1.05] text-[#A786B6] md:text-[3.2rem]">
-                  A professora
-                </span>
-                <div className="relative h-[120px] w-full">
-                  <Image
-                    src="/morgana-brand.png"
-                    alt="Morgana da Cruz"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 900px"
-                    className="object-contain object-center"
-                  />
-                </div>
-                <span className="text-right text-2xl font-black text-[#276678] md:text-3xl">
-                  também já viveu isso.
-                </span>
-              </div>
-            </div>
-          </div>
-        </AnimateIn>
-
-        {/* Cards revelação */}
-        <div className="grid gap-5 md:grid-cols-2">
-          <AnimateIn direction="left">
-            <div className="flex min-h-[300px] flex-col justify-between rounded-3xl bg-linear-to-br from-[#A786B6] to-[#7D5F94] p-8 md:p-10">
-              <p className="text-xl font-bold leading-snug text-white md:text-2xl">
-                E por sentir na pele os mesmos desafios que você, nasceu a
-              </p>
-              <Image
-                src="/plural-plataforma.svg"
-                alt="Plural Plataforma"
-                width={180}
-                height={60}
-                className="mt-8 w-full"
-              />
-            </div>
-          </AnimateIn>
-          <AnimateIn direction="right">
-            <div className="flex min-h-[300px] flex-col justify-between rounded-3xl bg-[#FFBE33] p-8 md:p-10">
-              <p className="leading-none">
-                <span
-                  className="align-bottom text-[78px] font-black text-white"
-                  style={{ fontFamily: "var(--font-inter, Inter, sans-serif)" }}
-                >
-                  o{" "}
-                </span>
-                <span
-                  className="text-[80px] font-black leading-none text-[#276678] md:text-[110px]"
-                  style={{
-                    fontFamily: "var(--font-inter, Inter, sans-serif)",
-                    letterSpacing: "-5px",
-                  }}
-                >
-                  1º app
-                </span>
-              </p>
-              <p className="text-[26px] font-black leading-tight md:text-[28px]">
-                <span className="text-[#276678]">exclusivo para professoras do AEE, </span>
-                <span className="font-bold text-white">
-                  feito para simplificar sua rotina e dar visibilidade ao seu trabalho.
-                </span>
-              </p>
-            </div>
-          </AnimateIn>
-        </div>
 
       </div>
     </section>

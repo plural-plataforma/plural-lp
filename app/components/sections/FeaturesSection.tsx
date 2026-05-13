@@ -70,12 +70,9 @@ export function FeaturesSection() {
 
         {/* Título */}
         <AnimateIn className="mb-16 text-center">
-          <span className="mb-4 inline-block rounded-full bg-[#FFBE33]/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#FFBE33]">
-            Funcionalidades
-          </span>
           <h2 className="text-3xl font-black text-white md:text-5xl">
-            O que a Plural{" "}
-            <span className="text-[#FFBE33]">faz por você</span>
+            Sem Plural x{" "}
+            <span className="text-[#FFBE33]">Com Plural</span>
           </h2>
         </AnimateIn>
 
@@ -154,56 +151,6 @@ export function FeaturesSection() {
             </span>
           </p>
         </AnimateIn>
-
-        {/* ── Grid de features ── */}
-        <div className="mb-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {features.map((f, i) => (
-            <AnimateIn key={f.title} delay={i * 70} direction="up" className="flex">
-              <FeatureCard {...f} />
-            </AnimateIn>
-          ))}
-        </div>
-
-        {/* Scroll + texto */}
-        <div className="flex flex-col items-center gap-3 px-4 py-4 text-center">
-          <Image
-            src="/scroll.png"
-            alt=""
-            width={20}
-            height={64}
-            className="opacity-40"
-            style={{ width: 20, height: "auto" }}
-          />
-          <p className="text-base font-semibold text-white/60">
-            Tudo em um ambiente simples, intuitivo e pensado para o chão da escola.
-          </p>
-        </div>
-
-        {/* Por que isso importa */}
-        <AnimateIn direction="up" className="mt-20 grid gap-8 rounded-3xl bg-white/5 p-8 md:grid-cols-2 md:p-12 ring-1 ring-white/10">
-          <div className="space-y-4">
-            <p className="text-xl font-black leading-snug text-white md:text-2xl">
-              Porque inclusão só acontece porque{" "}
-              <span className="text-[#FFBE33]">você faz acontecer</span>.
-            </p>
-            <p className="text-sm leading-relaxed text-white/70">
-              Você adapta conteúdos, garante que cada progresso seja registrado,
-              acolhe famílias, constrói pontes.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <p className="text-xl font-black leading-snug text-white md:text-2xl">
-              Mas você não deveria carregar esse peso sozinha.
-            </p>
-            <p className="text-sm leading-relaxed text-white/70">
-              A Plural nasceu para ser{" "}
-              <strong className="text-white">sua aliada</strong>: dar clareza,
-              leveza e devolver tempo para o que realmente importa:{" "}
-              <strong className="text-white">o aluno</strong>.
-            </p>
-          </div>
-        </AnimateIn>
-
       </div>
     </section>
   );

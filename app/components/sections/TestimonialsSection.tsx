@@ -8,7 +8,7 @@ export function TestimonialsSection() {
         {/* Título */}
         <AnimateIn className="mb-14 text-center">
           <span className="mb-4 inline-block rounded-full bg-[#FFBE33]/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#FFBE33]">
-            Depoimentos
+            O que as professoras estão dizendo
           </span>
           <h2 className="text-3xl font-black text-white md:text-4xl">
             Professoras de todo o Brasil já estão{" "}

@@ -1,174 +1,149 @@
-import Image from "next/image";
+import type { Icon } from "@phosphor-icons/react";
+import { BookBookmark, CheckCircle, Users } from "@phosphor-icons/react/dist/ssr";
+import { AnimateIn } from "@/app/components/ui/AnimateIn";
 
-const founders = [
-  {
-    name: "Morgana\nda Cruz",
-    photo: "/morgana.png",
-    watermarkColor: "text-white/40",
-    watermark: ["Mor", "ga", "na"],
-    bio: "Especialista em AEE. Referência nacional. Criadora do método Descomplique o AEE, com mais de +2.400 professoras formadas. Mais de +300 professoras já utilizando a Plataforma Plural.",
-  },
-  {
-    name: "Sabrina Ramalho",
-    photo: "/sabrina.png",
-    watermarkColor: "text-white/40",
-    watermark: ["Sa", "bri", "na"],
-    bio: "Especialista em EAD e tecnologia educacional. Responsável por levar inovação e impacto digital para a inclusão.",
-  },
-];
+function StatCard({
+  icon: CardIcon,
+  number,
+  numberClass,
+  description,
+  gradientClass,
+}: {
+  icon: Icon;
+  number: string;
+  numberClass: string;
+  description: string;
+  gradientClass: string;
+}) {
+  return (
+    <div
+      className={`relative flex h-full flex-col gap-4 overflow-hidden rounded-3xl bg-linear-to-br p-6 shadow-[0_8px_32px_rgba(39,102,120,0.08)] ring-1 ring-[#276678]/10 md:p-7 ${gradientClass}`}
+    >
+      <div className="flex size-11 items-center justify-center rounded-2xl bg-white/80 shadow-sm ring-1 ring-[#276678]/10">
+        <CardIcon size={22} weight="bold" className="text-[#276678]" />
+      </div>
+      <div>
+        <p className={`text-4xl font-black tracking-tight md:text-5xl ${numberClass}`}>{number}</p>
+        <p className="mt-3 text-sm font-bold leading-snug text-[#276678] md:text-base">{description}</p>
+      </div>
+    </div>
+  );
+}
 
 export function TeamSection() {
   return (
-    <section id="time" className="bg-background py-16">
-      <div className="mx-auto max-w-2xl px-6">
-        {/* Título */}
-        <h2 className="mb-3 text-center text-2xl font-black text-[#276678] md:text-3xl">
-          Criada por quem vive o AEE de verdade
-        </h2>
-        <p className="mb-8 text-center text-base leading-relaxed text-[#276678]/70">
-          A professora Morgana da Cruz conhece exatamente a realidade da sala de recursos.
-        </p>
+    <section id="time" className="relative overflow-hidden bg-[#f8f7fc] py-20 md:py-28">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-[#A786B6]/20 blur-3xl md:h-88 md:w-88"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-20 bottom-24 h-64 w-64 rounded-full bg-[#276678]/12 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[min(90vw,28rem)] w-[min(90vw,28rem)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FFBE33]/10 blur-3xl"
+      />
 
-        {/* ── MOBILE: fotos individuais (oculto em md+) ── */}
-        <div className="md:hidden">
-          {founders.map(({ name, photo, watermarkColor, watermark, bio }) => (
-            <div key={name} className="mb-12">
-              {/* Watermark + foto */}
-              <div className="relative flex items-start">
-                {/* Watermark — esquerda */}
-                <p
-                  className={`absolute left-8 -top-5 select-none text-6xl font-black leading-[0.82] ${watermarkColor}`}
-                  aria-hidden="true"
-                >
-                  {watermark.map((line, i) => (
-                    <span key={i} className="block">{line}</span>
-                  ))}
-                </p>
+      <div className="relative mx-auto max-w-4xl px-6">
+        <AnimateIn className="mb-12 text-center md:mb-16">
+          <span className="mb-4 inline-block rounded-full bg-[#A786B6]/15 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#A786B6]">
+            Quem criou a Plural
+          </span>
+          <h2 className="mb-5 text-3xl font-black leading-[1.12] text-[#276678] md:text-[2.75rem] md:leading-tight">
+            Criada por quem vive o AEE de verdade
+          </h2>
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#276678]/75 md:text-lg">
+            A professora Morgana da Cruz conhece exatamente a realidade da sala de recursos.
+          </p>
+        </AnimateIn>
 
-                {/* Foto — direita, ocupa ~60% */}
-                <div className="relative ml-auto h-[200px] w-[50%]">
-                    <Image
-                      src={photo}
-                      alt={name}
-                      fill
-                      sizes="58vw"
-                      className="object-contain object-top"
-                      loading="eager"
-                    />
-                </div>
-
-                {/* Nome — self-end gruda no fim (bottom) da div flex */}
-                <div className="self-end">
-                  <p className="text-left md:text-lg font-black leading-tight text-[#a786b6]">
-                    {name.split(" ").slice(0, -1).join(" ")}
-                    <br />
-                    {name.split(" ").slice(-1)[0]}
-                  </p>
-                </div>
-
-              </div>
-
-
-
-              {/* Bio — centralizada */}
-              <p className="mt-4 text-center text-sm font-bold leading-relaxed text-[#276678] px-4">
-                {bio}
+        <AnimateIn delay={80} className="mb-14 md:mb-16">
+          <div className="relative mx-auto max-w-2xl rounded-3xl bg-white/80 p-7 shadow-[0_4px_48px_rgba(39,102,120,0.07)] ring-1 ring-[#276678]/10 backdrop-blur-sm md:p-9">
+            <div
+              className="absolute bottom-8 left-6 top-8 w-1 rounded-full bg-linear-to-b from-[#A786B6] via-[#276678] to-[#FFBE33] md:left-8"
+              aria-hidden
+            />
+            <div className="space-y-5 pl-5 md:pl-6">
+              <p className="text-base font-semibold leading-relaxed text-[#276678] md:text-lg">
+                A Plural não foi criada por programadores que nunca pisaram em uma escola.
+              </p>
+              <p className="text-base font-bold leading-relaxed text-[#276678] md:text-lg">
+                Foi criada por quem vive o AEE no chão da escola.
               </p>
             </div>
-          ))}
+          </div>
+        </AnimateIn>
+
+        <AnimateIn delay={120} className="mb-4 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#276678]/55">São mais de:</p>
+        </AnimateIn>
+
+        <div className="mb-14 flex flex-col gap-4 md:mb-16 md:grid md:grid-cols-[1fr_auto_1fr] md:items-stretch md:gap-4">
+          <AnimateIn delay={140} direction="up" className="h-full min-w-0">
+            <StatCard
+              icon={BookBookmark}
+              number="+2.400"
+              numberClass="text-[#A786B6]"
+              description="professoras que conhecem o método Descomplique o AEE"
+              gradientClass="from-white to-[#A786B6]/12"
+            />
+          </AnimateIn>
+          <AnimateIn
+            delay={180}
+            direction="fade"
+            className="flex min-h-0 shrink-0 items-center justify-center py-1 md:min-h-full md:py-0"
+          >
+            <span className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-2xl bg-white text-lg font-black text-[#276678]/35 shadow-sm ring-1 ring-[#276678]/10 md:min-h-14 md:min-w-14 md:text-xl">
+              e
+            </span>
+          </AnimateIn>
+          <AnimateIn delay={140} direction="up" className="h-full min-w-0">
+            <StatCard
+              icon={CheckCircle}
+              number="+300"
+              numberClass="text-[#276678]"
+              description="professoras que já utilizam a Plataforma Plural"
+              gradientClass="from-white to-[#276678]/12"
+            />
+          </AnimateIn>
         </div>
 
-        {/* ── DESKTOP: foto da dupla + nomes lado a lado (oculto abaixo de md) ── */}
-        <div className="hidden md:block">
-          <div className="relative mb-6">
-            <p
-              className="pointer-events-none absolute -left-20 top-20 -translate-y-1/2 select-none text-7xl font-black leading-[0.8] text-white/40 md:text-8xl"
-              aria-hidden="true"
-            >
-              Mor<br />ga<br />na
-            </p>
-            <p
-              className="pointer-events-none absolute -right-18 top-65 -translate-y-1/2 select-none text-left text-7xl font-black leading-[0.8] text-white/40 md:text-8xl"
-              aria-hidden="true"
-            >
-              Sa<br />bri<br />na
-            </p>
-            <div className="relative mx-auto h-[360px] max-w-[560px] overflow-hidden rounded-tl-[60px] rounded-br-[60px]">
-              <Image
-                src="/team-photo.png"
-                alt="Morgana da Cruz e Sabrina Ramalho"
-                fill
-                sizes="560px"
-                className="object-cover object-top"
-              />
+        <AnimateIn delay={200} direction="up" className="mb-14 md:mb-16">
+          <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-[#276678] via-[#215a6a] to-[#183d47] p-8 text-center shadow-[0_12px_40px_rgba(39,102,120,0.25)] ring-1 ring-white/10 md:p-10">
+            <div
+              className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#FFBE33]/25 blur-2xl"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-[#A786B6]/20 blur-2xl"
+              aria-hidden
+            />
+            <p className="relative mb-4 text-xs font-bold uppercase tracking-[0.22em] text-white/55">Além disso:</p>
+            <div className="relative mx-auto flex max-w-xl flex-col items-center gap-3 md:flex-row md:justify-center md:gap-4">
+              <Users size={40} weight="bold" className="shrink-0 text-[#FFBE33] md:size-11" aria-hidden />
+              <p className="text-4xl font-black tracking-tight text-[#FFBE33] md:text-5xl">+ milhares</p>
             </div>
-          </div>
-
-          <div className="mb-10 grid gap-6 md:grid-cols-2">
-            <div className="text-right">
-              <p className="mb-2 font-black text-right text-[#a786b6]">Morgana da Cruz</p>
-              <p className="text-sm font-bold leading-relaxed text-[#276678]">
-                Especialista em AEE. Referência nacional. Criadora do método
-                Descomplique o AEE, com mais de +2.400 professoras formadas.
-                Mais de +300 professoras já utilizando a Plataforma Plural.
-              </p>
-            </div>
-            <div className="text-left">
-              <p className="mb-2 font-black text-[#a786b6]">Sabrina Ramalho</p>
-              <p className="text-sm font-bold leading-relaxed text-[#276678]">
-                Especialista em EAD e tecnologia educacional. Responsável por
-                levar inovação e impacto digital para a inclusão.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Texto de impacto — aparece em ambos */}
-        <div className="text-center">
-          <p className="mb-6 text-base font-bold leading-relaxed text-[#276678]">
-            A Plural não foi criada por programadores que nunca pisaram em uma
-            escola.
-            <br />
-            Foi criada por quem vive o AEE no chão da escola.
-          </p>
-
-          {/* Estatísticas */}
-          <p className="mb-4 text-sm font-semibold text-[#276678]/60 uppercase tracking-widest">
-            São mais de:
-          </p>
-          <div className="mb-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl bg-[#A786B6]/10 p-5">
-              <p className="text-3xl font-black text-[#A786B6]">+2.400</p>
-              <p className="mt-1 text-sm font-bold text-[#276678]">
-                professoras que conhecem o<br />método Descomplique o AEE
-              </p>
-            </div>
-            <div className="rounded-2xl bg-[#276678]/10 p-5">
-              <p className="text-3xl font-black text-[#276678]">+300</p>
-              <p className="mt-1 text-sm font-bold text-[#276678]">
-                professoras que já utilizam a<br />Plataforma Plural
-              </p>
-            </div>
-          </div>
-          <p className="mb-4 text-sm font-semibold text-[#276678]/60 uppercase tracking-widest">
-            Além disso:
-          </p>
-          <div className="mb-8 rounded-2xl bg-[#FFBE33]/10 p-5">
-            <p className="text-3xl font-black text-[#FFBE33]">+ milhares</p>
-            <p className="mt-1 text-sm font-bold text-[#276678]">
+            <p className="relative mx-auto mt-4 max-w-lg text-base font-semibold leading-snug text-white/90 md:text-lg">
               de professoras construindo o futuro do AEE
             </p>
           </div>
+        </AnimateIn>
 
-          <p className="mb-8 text-lg font-black text-[#276678] md:text-xl">
-            Agora, toda essa experiência virou uma plataforma.
+        <AnimateIn delay={240} direction="up" className="text-center">
+          <p className="mx-auto max-w-xl text-xl font-black leading-snug text-[#276678] md:text-2xl">
+            Agora, toda essa experiência virou uma{" "}
+            <span className="relative inline-block text-[#A786B6]">
+              plataforma
+              <span
+                aria-hidden
+                className="absolute -bottom-0.5 left-0 right-0 h-2 rounded-full bg-[#FFBE33]/45"
+              />
+            </span>
+            .
           </p>
-
-          {/* Transição para depoimentos — exato do doc */}
-          <p className="text-2xl font-black text-[#A786B6] md:text-3xl">
-            O que as professoras estão dizendo
-          </p>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

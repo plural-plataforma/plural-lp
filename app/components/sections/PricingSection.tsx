@@ -12,6 +12,7 @@ type Plan = {
 };
 
 const plans: Plan[] = [
+  /* Temporário: plano com acesso gratuito / exploratório
   {
     label: "Assinatura Gratuita",
     price: "Grátis",
@@ -19,6 +20,7 @@ const plans: Plan[] = [
     subtitle: "Para conhecer a plataforma e começar a explorar",
     perks: ["Acesso limitado à plataforma", "Ideal para explorar os recursos"],
   },
+  */
   {
     label: "Assinatura Mensal",
     price: "R$49,90",
@@ -55,7 +57,12 @@ export function PricingSection() {
         {/* Cards de preço */}
         <div className="mb-12 flex flex-col items-stretch justify-center gap-4 sm:flex-row">
           {plans.map(({ label, price, period, subtitle, highlight, badge, perks }, i) => (
-            <AnimateIn key={label} delay={i * 100} direction={i === 0 ? "left" : i === 2 ? "right" : "up"} className="flex flex-1">
+            <AnimateIn
+              key={label}
+              delay={i * 100}
+              direction={i === 0 ? "left" : i === plans.length - 1 ? "right" : "up"}
+              className="flex flex-1"
+            >
             <div
               className={`flex h-full w-full flex-col overflow-hidden rounded-2xl ${
                 highlight

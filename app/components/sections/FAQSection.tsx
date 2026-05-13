@@ -13,10 +13,12 @@ const faqs = [
     q: "Funciona só para AEE?",
     a: "Sim. Ela foi criada especialmente para apoiar a professora do AEE.",
   },
+  /* Temporário: menção a plano / acesso gratuito
   {
     q: "Existe plano gratuito?",
     a: "Sim. Você pode começar conhecendo a plataforma antes de avançar para os planos completos.",
   },
+  */
   {
     q: "A plataforma vai evoluir com o tempo?",
     a: "Sim. A Plural está em constante desenvolvimento com base nas necessidades reais das professoras.",
