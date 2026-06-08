@@ -1,4 +1,5 @@
 import { AnimateIn } from "@/app/components/ui/AnimateIn";
+import { CHECKOUT_URL } from "@/app/lib/constants";
 
 export function ClosingCTASection() {
   return (
@@ -46,7 +47,9 @@ export function ClosingCTASection() {
         {/* CTA */}
         <AnimateIn direction="scale" delay={200}>
           <a
-            href="#inscricao"
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-2xl bg-[#FFBE33] px-12 py-5 text-center text-base font-extrabold uppercase tracking-wide text-[#276678] shadow-[0_8px_40px_rgba(255,190,51,0.4)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_50px_rgba(255,190,51,0.55)] active:scale-[0.98]"
           >
             <span

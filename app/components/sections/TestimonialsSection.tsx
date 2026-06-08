@@ -1,4 +1,44 @@
+import Image from "next/image";
 import { AnimateIn } from "@/app/components/ui/AnimateIn";
+
+const testimonials = [
+  {
+    src: "/testimonials/1.png",
+    alt: "Depoimento de professora sobre organização na Sala de Recursos",
+    width: 740,
+    height: 425,
+  },
+  {
+    src: "/testimonials/2.png",
+    alt: "Depoimento de professora sobre organização da vida funcional dos alunos",
+    width: 739,
+    height: 534,
+  },
+  {
+    src: "/testimonials/3.png",
+    alt: "Depoimento de professora sobre segurança na elaboração de documentos",
+    width: 718,
+    height: 465,
+  },
+  {
+    src: "/testimonials/4.png",
+    alt: "Depoimento de professora sobre organização de documentos do AEE",
+    width: 717,
+    height: 356,
+  },
+  {
+    src: "/testimonials/5.png",
+    alt: "Depoimento de Marcia Lara sobre a plataforma Plural",
+    width: 637,
+    height: 201,
+  },
+  {
+    src: "/testimonials/6.png",
+    alt: "Depoimento de professora recomendando a plataforma Plural",
+    width: 634,
+    height: 349,
+  },
+] as const;
 
 export function TestimonialsSection() {
   return (
@@ -18,9 +58,9 @@ export function TestimonialsSection() {
 
         {/* Grid de depoimentos */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <AnimateIn key={i} delay={i * 90} direction="up">
-              <TestimonialSlot index={i + 1} />
+          {testimonials.map((testimonial, i) => (
+            <AnimateIn key={testimonial.src} delay={i * 90} direction="up">
+              <TestimonialCard {...testimonial} />
             </AnimateIn>
           ))}
         </div>
@@ -30,27 +70,27 @@ export function TestimonialsSection() {
   );
 }
 
-function TestimonialSlot({ index }: { index: number }) {
+function TestimonialCard({
+  src,
+  alt,
+  width,
+  height,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}) {
   return (
-    <div className="flex flex-col gap-4 rounded-2xl bg-white/8 p-6 ring-1 ring-white/10">
-      <span className="text-5xl font-black leading-none text-[#FFBE33]/30" aria-hidden>
-        "
-      </span>
-      <div className="flex flex-1 flex-col items-center justify-center gap-2 rounded-xl bg-white/5 px-4 py-8 text-center">
-        <span className="rounded-full bg-[#FFBE33]/20 px-3 py-1 text-xs font-bold text-[#FFBE33]">
-          Depoimento {index}
-        </span>
-        <p className="text-xs text-white/40">
-          Inserir print ou feedback real de professora usando a plataforma
-        </p>
-      </div>
-      <div className="flex items-center gap-3">
-        <div className="size-9 rounded-full bg-[#A786B6]/30 ring-1 ring-[#A786B6]/20" />
-        <div className="space-y-1">
-          <div className="h-2.5 w-24 rounded-full bg-white/20" />
-          <div className="h-2 w-16 rounded-full bg-white/10" />
-        </div>
-      </div>
+    <div className="overflow-hidden rounded-2xl bg-white/8 ring-1 ring-white/10 transition-transform duration-200 hover:-translate-y-1">
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        className="h-auto w-full"
+      />
     </div>
   );
 }

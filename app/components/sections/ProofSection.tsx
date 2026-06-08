@@ -1,6 +1,64 @@
 import Image from "next/image";
 import { AnimateIn } from "@/app/components/ui/AnimateIn";
 
+const dashboard = {
+  src: "/sections/dash.png",
+  alt: "Dashboard principal da Plural Plataforma",
+  width: 2940,
+  height: 1604,
+} as const;
+
+const desktopScreens = [
+  {
+    src: "/sections/aluno.png",
+    alt: "Cadastro de alunos na Plural Plataforma",
+    width: 2936,
+    height: 1604,
+    label: "Cadastro de Alunos",
+    description: "Perfil completo com histórico centralizado",
+  },
+  {
+    src: "/sections/paee.png",
+    alt: "PAEE com habilidades na Plural Plataforma",
+    width: 2942,
+    height: 1602,
+    label: "PAEE estruturado",
+    description: "Do diagnóstico ao plano em minutos",
+  },
+  {
+    src: "/sections/avaliacao.png",
+    alt: "Avaliação diagnóstica na Plural Plataforma",
+    width: 2936,
+    height: 1598,
+    label: "Avaliação Diagnóstica",
+    description: "Pronta e estruturada para cada aluno",
+  },
+] as const;
+
+const mobileScreens = [
+  {
+    src: "/sections/mobile1.png",
+    alt: "Dashboard da Plural Plataforma no celular",
+    width: 1290,
+    height: 2796,
+    label: "Dashboard mobile",
+  },
+  {
+    src: "/sections/mobile2.png",
+    alt: "Menu da Plural Plataforma no celular",
+    width: 1290,
+    height: 2796,
+    label: "Navegação mobile",
+  },
+  {
+    src: "/sections/mobileDark.png",
+    alt: "Modo escuro da Plural Plataforma no celular",
+    width: 1290,
+    height: 2796,
+    label: "Modo escuro",
+  },
+] as const;
+
 export function ProofSection() {
   return (
     <section className="bg-[#f8f7fc] py-24">
@@ -20,42 +78,44 @@ export function ProofSection() {
           </p>
         </AnimateIn>
 
-        {/* Slot principal — full width */}
+        {/* Dashboard principal */}
         <AnimateIn direction="scale" className="mb-4">
-          <div className="overflow-hidden rounded-3xl bg-[#276678] ring-1 ring-[#276678]/20">
-            <div className="relative aspect-video w-full">
-              <Image
-                src="/plural-plataforma.svg"
-                alt="Dashboard Plural Plataforma"
-                fill
-                sizes="(max-width: 768px) 100vw, 1000px"
-                className="object-contain p-16 opacity-20"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-8 text-center">
-                <span className="rounded-full bg-[#FFBE33]/25 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#FFBE33]">
-                  Em breve
-                </span>
-                <p className="text-2xl font-black text-white md:text-3xl">
-                  Print do Dashboard principal
-                </p>
-                <p className="text-sm text-white/50">
-                  Visão geral dos alunos, atendimentos e planejamentos
-                </p>
-              </div>
-            </div>
+          <div className="overflow-hidden rounded-3xl ring-1 ring-[#276678]/15 shadow-[0_16px_48px_rgba(39,102,120,0.12)]">
+            <Image
+              src={dashboard.src}
+              alt={dashboard.alt}
+              width={dashboard.width}
+              height={dashboard.height}
+              sizes="(max-width: 768px) 100vw, 1000px"
+              className="h-auto w-full"
+              priority
+            />
           </div>
         </AnimateIn>
 
-        {/* Grade de slots menores */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            { label: "Cadastro de Alunos",         description: "Perfil completo com histórico centralizado",       isVideo: false },
-            { label: "PAEE sendo construído",       description: "Do diagnóstico ao plano em minutos",               isVideo: true  },
-            { label: "Avaliação Diagnóstica",       description: "Pronta e estruturada para cada aluno",             isVideo: true  },
-            { label: "Interface mobile e desktop",  description: "Acesse de qualquer dispositivo, a qualquer hora", isVideo: false },
-          ].map(({ label, description, isVideo }, i) => (
-            <AnimateIn key={label} delay={i * 80} direction="up">
-              <ProofSlot label={label} description={description} isVideo={isVideo} />
+        {/* Telas desktop */}
+        <div className="mb-4 grid gap-4 md:grid-cols-3">
+          {desktopScreens.map((screen, i) => (
+            <AnimateIn key={screen.src} delay={i * 80} direction="up">
+              <ProofCard {...screen} />
+            </AnimateIn>
+          ))}
+        </div>
+
+        {/* Telas mobile */}
+        <AnimateIn className="mb-6 text-center">
+          <p className="text-sm font-black text-[#276678] md:text-base">
+            Interface mobile e desktop
+          </p>
+          <p className="text-xs text-[#276678]/50 md:text-sm">
+            Acesse de qualquer dispositivo, a qualquer hora
+          </p>
+        </AnimateIn>
+
+        <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-3">
+          {mobileScreens.map((screen, i) => (
+            <AnimateIn key={screen.src} delay={i * 80} direction="up">
+              <MobileProofCard {...screen} />
             </AnimateIn>
           ))}
         </div>
@@ -65,33 +125,65 @@ export function ProofSection() {
   );
 }
 
-function ProofSlot({
+function ProofCard({
+  src,
+  alt,
+  width,
+  height,
   label,
   description,
-  isVideo = false,
 }: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
   label: string;
   description: string;
-  isVideo?: boolean;
 }) {
   return (
-    <div className="flex aspect-square flex-col items-center justify-center gap-3 rounded-2xl bg-white p-6 text-center ring-1 ring-[#276678]/10 transition-all duration-200 hover:-translate-y-1 hover:shadow-md h-full">
-      {isVideo ? (
-        <div className="flex size-12 items-center justify-center rounded-full bg-[#A786B6]/15">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="size-5 text-[#A786B6]" aria-hidden>
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-      ) : (
-        <div className="flex size-12 items-center justify-center rounded-full bg-[#276678]/10">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="size-5 text-[#276678]" aria-hidden>
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <path d="M3 9h18M9 21V9" />
-          </svg>
-        </div>
-      )}
-      <p className="text-sm font-black text-[#276678]">{label}</p>
-      <p className="text-xs text-[#276678]/50">{description}</p>
+    <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-[#276678]/10 transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        sizes="(max-width: 768px) 100vw, 33vw"
+        className="h-auto w-full"
+      />
+      <div className="px-4 py-3 text-center">
+        <p className="text-sm font-black text-[#276678]">{label}</p>
+        <p className="text-xs text-[#276678]/50">{description}</p>
+      </div>
+    </div>
+  );
+}
+
+function MobileProofCard({
+  src,
+  alt,
+  width,
+  height,
+  label,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  label: string;
+}) {
+  return (
+    <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-[#276678]/10 transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        sizes="(max-width: 640px) 80vw, 240px"
+        className="h-auto w-full"
+      />
+      <p className="px-3 py-2.5 text-center text-xs font-bold text-[#276678]">
+        {label}
+      </p>
     </div>
   );
 }

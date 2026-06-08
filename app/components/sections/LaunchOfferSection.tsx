@@ -1,4 +1,5 @@
 import { AnimateIn } from "@/app/components/ui/AnimateIn";
+import { CHECKOUT_URL } from "@/app/lib/constants";
 
 export function LaunchOfferSection() {
   return (
@@ -78,6 +79,21 @@ export function LaunchOfferSection() {
             </div>
 
           </div>
+        </AnimateIn>
+
+        <AnimateIn direction="up" delay={250} className="mt-10">
+          <a
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center justify-center overflow-hidden rounded-2xl bg-[#276678] px-12 py-5 text-base font-extrabold uppercase tracking-wide text-white shadow-[0_8px_40px_rgba(39,102,120,0.35)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_50px_rgba(39,102,120,0.5)] active:scale-[0.98]"
+          >
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-linear-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+            />
+            <span className="relative z-10">Garantir minha vaga</span>
+          </a>
         </AnimateIn>
 
       </div>

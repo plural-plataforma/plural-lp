@@ -1,5 +1,6 @@
 import { Check } from "@phosphor-icons/react/dist/ssr";
 import { AnimateIn } from "@/app/components/ui/AnimateIn";
+import { CHECKOUT_URL } from "@/app/lib/constants";
 
 type Plan = {
   label: string;
@@ -131,7 +132,9 @@ export function PricingSection() {
         {/* CTAs */}
         <AnimateIn direction="up" delay={150} className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
-            href="#inscricao"
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative flex items-center justify-center overflow-hidden rounded-2xl bg-linear-to-t from-[#276678] via-[#3a9ab8] to-[#55B3CE] px-10 py-4 text-sm font-extrabold uppercase tracking-wide text-white shadow-[0_6px_32px_rgba(39,102,120,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
           >
             <span

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CHECKOUT_URL } from "@/app/lib/constants";
 import type { Icon } from "@phosphor-icons/react";
 import {
   FileText,
@@ -152,7 +153,9 @@ export function HeroSection() {
           {/* CTAs */}
           <div className="hero-cta flex w-full flex-col gap-3 sm:flex-row">
             <a
-              href="#inscricao"
+              href={CHECKOUT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-[#276678] px-6 py-4 text-center text-sm font-extrabold uppercase tracking-wide text-white shadow-[0_6px_24px_rgba(39,102,120,0.35)] transition-all duration-300 hover:bg-[#1b4a57] hover:shadow-[0_8px_32px_rgba(39,102,120,0.5)] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span
