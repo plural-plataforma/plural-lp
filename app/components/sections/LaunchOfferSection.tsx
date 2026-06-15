@@ -56,7 +56,7 @@ export function LaunchOfferSection() {
             {/* Preço à vista */}
             <div className="mb-1 flex items-end justify-center gap-2">
               <span className="text-5xl font-black text-[#FFBE33] md:text-6xl">
-                R$299,40
+                R$297,00
               </span>
               <span className="mb-2 text-lg font-semibold text-[#FFBE33]/70">/ano</span>
             </div>
@@ -75,7 +75,7 @@ export function LaunchOfferSection() {
             </p>
             <div className="flex items-baseline justify-center gap-1.5">
               <span className="text-sm font-semibold text-white/60">12x de R$</span>
-              <span className="text-4xl font-black text-[#FFBE33]">24,95</span>
+              <span className="text-4xl font-black text-[#FFBE33]">30,72</span>
             </div>
 
           </div>
