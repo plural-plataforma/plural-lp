@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { ArrowRight, List, X } from "@phosphor-icons/react/dist/ssr";
-import { CHECKOUT_URL } from "@/app/lib/constants";
+import { APP_URL, CHECKOUT_URL } from "@/app/lib/constants";
 
 const navLinks = [
   { label: "Funcionalidades", href: "#funcionalidades" },
@@ -142,6 +142,14 @@ export function Header() {
 
               <div className="relative z-10 flex shrink-0 items-center gap-2 sm:gap-3">
                 <a
+                  href={APP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden rounded-full px-4 py-2.5 text-sm font-bold text-[#276678] ring-1 ring-[#276678]/25 transition-all duration-200 hover:bg-[#276678]/8 hover:ring-[#276678]/40 active:scale-[0.97] md:flex"
+                >
+                  Entrar
+                </a>
+                <a
                   href={CHECKOUT_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -243,7 +251,7 @@ export function Header() {
           </nav>
 
           <div
-            className="px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
+            className="flex flex-col gap-3 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
             style={{
               opacity: menuOpen ? 1 : 0,
               transform: menuOpen ? "translateY(0)" : "translateY(16px)",
@@ -253,6 +261,16 @@ export function Header() {
               transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={menuOpen ? undefined : -1}
+              onClick={closeMenu}
+              className="flex w-full items-center justify-center rounded-2xl bg-white/10 py-4 text-base font-bold text-white ring-1 ring-white/20 transition-colors hover:bg-white/20 active:scale-[0.98]"
+            >
+              Entrar
+            </a>
             <a
               href={CHECKOUT_URL}
               target="_blank"
