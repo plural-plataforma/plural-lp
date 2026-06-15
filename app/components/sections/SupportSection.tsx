@@ -13,7 +13,7 @@ export function SupportSection() {
             </span>
           </p>
           <a
-            href="https://wa.me/5500000000000"
+            href="http://wa.link/v4o6em"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 rounded-2xl bg-[#25D366] px-8 py-4 font-bold uppercase tracking-wide text-white shadow-[0_4px_20px_rgba(37,211,102,0.3)] transition-all hover:scale-[1.02] hover:bg-[#1da851] active:scale-[0.98]"
