@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito, Inter, Lato } from "next/font/google";
+import { MetaPixel } from "@/app/components/analytics/MetaPixel";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -115,12 +116,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+
   return (
     <html
       lang="pt-BR"
       className={`${nunito.variable} ${inter.variable} ${lato.variable} ${nunito.className} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <MetaPixel pixelId={metaPixelId} />
         {children}
       </body>
     </html>
