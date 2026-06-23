@@ -45,17 +45,17 @@ const mobileScreens = [
   },
   {
     src: "/sections/mobile2.png",
-    alt: "Menu da Plural Plataforma no celular",
+    alt: "Estudo de caso",
     width: 1290,
     height: 2796,
-    label: "Navegação mobile",
+    label: "Estudo de caso",
   },
   {
-    src: "/sections/mobileDark.png",
-    alt: "Modo escuro da Plural Plataforma no celular",
+    src: "/sections/mobile3.png",
+    alt: "Registro de atendimento",
     width: 1290,
     height: 2796,
-    label: "Modo escuro",
+    label: "Registro de atendimento",
   },
 ] as const;
 

@@ -1,7 +1,17 @@
 import { AnimateIn } from "@/app/components/ui/AnimateIn";
 import { CHECKOUT_URL } from "@/app/lib/constants";
 
-export function LaunchOfferSection() {
+type LaunchOfferSectionProps = {
+  variant?: "checkout" | "waitlist";
+  ctaHref?: string;
+};
+
+export function LaunchOfferSection({
+  variant = "checkout",
+  ctaHref = CHECKOUT_URL,
+}: LaunchOfferSectionProps) {
+  const isWaitlist = variant === "waitlist";
+
   return (
     <section
       id="inscricao"
@@ -26,9 +36,20 @@ export function LaunchOfferSection() {
           </div>
 
           <p className="mb-12 text-base leading-relaxed text-[#444] md:text-lg">
-            Neste primeiro momento, serão 300 vagas com{" "}
-            <strong className="text-[#276678]">50% de desconto</strong> no valor
-            oficial.
+            {isWaitlist ? (
+              <>
+                Neste primeiro momento liberaremos o{" "}
+                <strong className="text-[#276678]">PLANO ANUAL</strong> com{" "}
+                <strong className="text-[#276678]">50% de desconto</strong> no
+                valor oficial.
+              </>
+            ) : (
+              <>
+                Neste primeiro momento, serão 300 vagas com{" "}
+                <strong className="text-[#276678]">50% de desconto</strong> no
+                valor oficial.
+              </>
+            )}
           </p>
         </AnimateIn>
 
@@ -81,9 +102,18 @@ export function LaunchOfferSection() {
           </div>
         </AnimateIn>
 
+        {isWaitlist && (
+          <AnimateIn direction="up" delay={200}>
+            <p className="mt-10 text-base leading-relaxed text-[#444] md:text-lg">
+              No nosso grupo de espera no Whats você poderá garantir uma dessas
+              300 vagas e ter acesso a bônus exclusivos de lançamento.
+            </p>
+          </AnimateIn>
+        )}
+
         <AnimateIn direction="up" delay={250} className="mt-10">
           <a
-            href={CHECKOUT_URL}
+            href={ctaHref}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-2xl bg-[#276678] px-12 py-5 text-base font-extrabold uppercase tracking-wide text-white shadow-[0_8px_40px_rgba(39,102,120,0.35)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_50px_rgba(39,102,120,0.5)] active:scale-[0.98]"
@@ -92,7 +122,9 @@ export function LaunchOfferSection() {
               aria-hidden
               className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-linear-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
             />
-            <span className="relative z-10">Garantir minha vaga</span>
+            <span className="relative z-10">
+              {isWaitlist ? "Entrar no grupo de espera" : "Garantir minha vaga"}
+            </span>
           </a>
         </AnimateIn>
 

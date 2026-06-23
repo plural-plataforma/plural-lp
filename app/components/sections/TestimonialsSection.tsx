@@ -38,6 +38,12 @@ const testimonials = [
     width: 634,
     height: 349,
   },
+    {
+    src: "/testimonials/7.png",
+    alt: "Depoimento de professora recomendando a plataforma Plural da nova versão",
+    width: 729,
+    height: 328,
+  },
 ] as const;
 
 export function TestimonialsSection() {

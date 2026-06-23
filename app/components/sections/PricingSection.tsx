@@ -40,7 +40,11 @@ const plans: Plan[] = [
   },
 ];
 
-export function PricingSection() {
+type PricingSectionProps = {
+  ctaHref?: string;
+};
+
+export function PricingSection({ ctaHref = CHECKOUT_URL }: PricingSectionProps) {
   return (
     <section id="planos" className="bg-background py-24">
       <div className="mx-auto max-w-3xl px-6 text-center">
@@ -132,7 +136,7 @@ export function PricingSection() {
         {/* CTAs */}
         <AnimateIn direction="up" delay={150} className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
-            href={CHECKOUT_URL}
+            href={ctaHref}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex items-center justify-center overflow-hidden rounded-2xl bg-linear-to-t from-[#276678] via-[#3a9ab8] to-[#55B3CE] px-10 py-4 text-sm font-extrabold uppercase tracking-wide text-white shadow-[0_6px_32px_rgba(39,102,120,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"

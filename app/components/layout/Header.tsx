@@ -12,7 +12,11 @@ const navLinks = [
   { label: "FAQ", href: "#faq" },
 ] as const;
 
-export function Header() {
+type HeaderProps = {
+  ctaHref?: string;
+};
+
+export function Header({ ctaHref = CHECKOUT_URL }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -150,7 +154,7 @@ export function Header() {
                   Entrar
                 </a>
                 <a
-                  href={CHECKOUT_URL}
+                  href={ctaHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative hidden items-center gap-2 overflow-hidden rounded-full bg-linear-to-r from-[#276678] to-[#3a8fa5] px-5 py-2.5 text-sm font-extrabold text-white shadow-[0_4px_20px_rgba(39,102,120,0.35)] transition-all duration-300 hover:shadow-[0_6px_28px_rgba(39,102,120,0.45)] active:scale-[0.97] md:flex lg:px-6"
@@ -272,7 +276,7 @@ export function Header() {
               Entrar
             </a>
             <a
-              href={CHECKOUT_URL}
+              href={ctaHref}
               target="_blank"
               rel="noopener noreferrer"
               tabIndex={menuOpen ? undefined : -1}
