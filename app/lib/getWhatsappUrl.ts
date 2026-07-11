@@ -5,6 +5,9 @@ import { WHATSAPP_WAITLIST_URL } from "@/app/lib/constants";
  * monorepo `project`), com fallback para a constante hardcoded caso a API
  * esteja fora do ar ou não esteja configurada — evita que a LP fique sem
  * link de conversão.
+ *
+ * NEXT_PUBLIC_API_URL segue o mesmo padrão do VITE_API_URL do admin, ou seja,
+ * já inclui o sufixo "/api" (ex.: https://plural.runasp.net/api).
  */
 export async function getWhatsappUrl(): Promise<string> {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL?.trim();
@@ -14,7 +17,7 @@ export async function getWhatsappUrl(): Promise<string> {
   }
 
   try {
-    const response = await fetch(`${apiUrl.replace(/\/$/, "")}/api/publico/configuracoes/whatsapp`, {
+    const response = await fetch(`${apiUrl.replace(/\/$/, "")}/publico/configuracoes/whatsapp`, {
       cache: "no-store",
       signal: AbortSignal.timeout(3000),
     });
