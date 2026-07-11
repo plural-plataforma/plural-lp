@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { LandingPageContent } from "@/app/components/LandingPageContent";
-import { WHATSAPP_WAITLIST_URL } from "@/app/lib/constants";
+import { getWhatsappUrl } from "@/app/lib/getWhatsappUrl";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Lista de espera — Oferta de lançamento",
@@ -8,10 +10,12 @@ export const metadata: Metadata = {
     "Entre no grupo de espera no WhatsApp e garanta uma das 300 vagas com 50% de desconto no plano anual da Plural Plataforma, com bônus exclusivos de lançamento.",
 };
 
-export default function EsperaPage() {
+export default async function EsperaPage() {
+  const whatsappUrl = await getWhatsappUrl();
+
   return (
     <LandingPageContent
-      ctaHref={WHATSAPP_WAITLIST_URL}
+      ctaHref={whatsappUrl}
       launchOfferVariant="waitlist"
       showClosingCTA={false}
     />
