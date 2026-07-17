@@ -14,23 +14,31 @@ import { FAQSection } from "@/app/components/sections/FAQSection";
 import { ClosingCTASection } from "@/app/components/sections/ClosingCTASection";
 import { SupportSection } from "@/app/components/sections/SupportSection";
 import { FooterSection } from "@/app/components/sections/FooterSection";
-import { CHECKOUT_URL } from "@/app/lib/constants";
-
 type LandingPageContentProps = {
-  ctaHref?: string;
-  launchOfferVariant?: "checkout" | "waitlist";
+  ctaHref: string;
+  ctaHrefFinal?: string;
+  ctaHrefMensal?: string;
+  ctaHrefAnual?: string;
+  secondaryCtaHref?: string;
+  showPricing?: boolean;
+  showLaunchOffer?: boolean;
   showClosingCTA?: boolean;
 };
 
 export function LandingPageContent({
-  ctaHref = CHECKOUT_URL,
-  launchOfferVariant = "checkout",
+  ctaHref,
+  ctaHrefFinal = ctaHref,
+  ctaHrefMensal = "",
+  ctaHrefAnual = "",
+  secondaryCtaHref = "#planos",
+  showPricing = true,
+  showLaunchOffer = false,
   showClosingCTA = true,
 }: LandingPageContentProps) {
   return (
     <>
       <Header ctaHref={ctaHref} />
-      <HeroSection ctaHref={ctaHref} />
+      <HeroSection ctaHref={ctaHref} secondaryCtaHref={secondaryCtaHref} />
       <TickerSection />
       <PainPointsSection />
       <FeaturesSection />
@@ -38,11 +46,13 @@ export function LandingPageContent({
       <WhatPluralDoesSection />
       <TeamSection />
       <TestimonialsSection />
-      <PricingSection ctaHref={ctaHref} />
-      <LaunchOfferSection variant={launchOfferVariant} ctaHref={ctaHref} />
+      {showPricing && (
+        <PricingSection ctaHrefMensal={ctaHrefMensal} ctaHrefAnual={ctaHrefAnual} />
+      )}
+      {showLaunchOffer && <LaunchOfferSection ctaHref={ctaHrefFinal} />}
       <ObjectionsSection />
       <FAQSection />
-      {showClosingCTA && <ClosingCTASection ctaHref={ctaHref} />}
+      {showClosingCTA && <ClosingCTASection ctaHref={ctaHrefFinal} />}
       <SupportSection />
       <FooterSection />
     </>

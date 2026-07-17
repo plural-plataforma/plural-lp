@@ -1,17 +1,36 @@
 import { AnimateIn } from "@/app/components/ui/AnimateIn";
-import { CHECKOUT_URL } from "@/app/lib/constants";
 
 type LaunchOfferSectionProps = {
-  variant?: "checkout" | "waitlist";
-  ctaHref?: string;
+  ctaHref: string;
 };
 
-export function LaunchOfferSection({
-  variant = "checkout",
-  ctaHref = CHECKOUT_URL,
-}: LaunchOfferSectionProps) {
-  const isWaitlist = variant === "waitlist";
+type PlanoResumo = {
+  id: "mensal" | "anual";
+  label: string;
+  originalPrice?: string;
+  price: string;
+  period: string;
+  installment?: string;
+};
 
+const planos: PlanoResumo[] = [
+  {
+    id: "mensal",
+    label: "assinatura mensal",
+    price: "R$49,90",
+    period: "/mês",
+  },
+  {
+    id: "anual",
+    label: "assinatura anual",
+    originalPrice: "R$997,00",
+    price: "R$588,00",
+    period: "/ano",
+    installment: "ou em até 12x de R$60,81",
+  },
+];
+
+export function LaunchOfferSection({ ctaHref }: LaunchOfferSectionProps) {
   return (
     <section
       id="inscricao"
@@ -22,109 +41,83 @@ export function LaunchOfferSection({
         {/* Badge */}
         <AnimateIn direction="down">
           <span className="mb-6 inline-block rounded-full bg-white/30 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#276678]">
-            Oferta de Lançamento
+            Planos Mensal e Anual
           </span>
 
           <h2 className="mb-4 text-3xl font-black text-[#276678] md:text-5xl">
-            Oferta de Lançamento
+            Acesso completo à Plataforma Plural
           </h2>
 
-          <div className="mb-8 inline-block rounded-2xl bg-[#276678] px-10 py-3">
-            <p className="text-2xl font-black text-white md:text-3xl">
-              Apenas 300 vagas
-            </p>
-          </div>
-
           <p className="mb-12 text-base leading-relaxed text-[#444] md:text-lg">
-            {isWaitlist ? (
-              <>
-                Neste primeiro momento liberaremos o{" "}
-                <strong className="text-[#276678]">PLANO ANUAL</strong> com{" "}
-                <strong className="text-[#276678]">50% de desconto</strong> no
-                valor oficial.
-              </>
-            ) : (
-              <>
-                Neste primeiro momento, serão 300 vagas com{" "}
-                <strong className="text-[#276678]">50% de desconto</strong> no
-                valor oficial.
-              </>
-            )}
+            Entre no nosso grupo de espera no WhatsApp e garanta acesso aos
+            planos <strong className="text-[#276678]">Mensal</strong> e{" "}
+            <strong className="text-[#276678]">Anual</strong> assim que as
+            inscrições abrirem.
           </p>
         </AnimateIn>
 
-        {/* Pricing card */}
-        <AnimateIn direction="scale" delay={150} className="mx-auto max-w-[420px] overflow-hidden rounded-3xl shadow-[0_24px_80px_rgba(39,102,120,0.25)]">
+        {/* Pricing cards */}
+        <div className="mb-12 flex flex-col items-stretch justify-center gap-4 sm:flex-row">
+          {planos.map((plano, i) => (
+            <AnimateIn
+              key={plano.id}
+              direction="scale"
+              delay={150 + i * 100}
+              className="flex-1 overflow-hidden rounded-3xl shadow-[0_24px_80px_rgba(39,102,120,0.25)]"
+            >
+              <div className="flex h-full flex-col">
+                {/* Header */}
+                <div className="bg-[#276678]/15 px-8 py-4">
+                  <p className="text-sm font-semibold text-[#276678]">{plano.label}</p>
+                </div>
 
-          {/* Header */}
-          <div className="bg-[#276678]/15 px-8 py-4">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-[#276678]">assinatura anual</p>
-              <span className="rounded-full bg-[#FFBE33] px-3 py-1 text-xs font-black text-[#276678]">
-                50% OFF
-              </span>
-            </div>
-          </div>
+                {/* Body */}
+                <div className="flex flex-1 flex-col items-center justify-center bg-linear-to-b from-[#276678] to-[#14414e] px-8 py-10">
+                  {plano.originalPrice && (
+                    <p className="mb-1 text-center text-sm font-medium text-white/50 line-through">
+                      {plano.originalPrice}
+                    </p>
+                  )}
 
-          {/* Body */}
-          <div className="bg-linear-to-b from-[#276678] to-[#14414e] px-8 py-10">
+                  <div className="mb-1 flex items-end justify-center gap-2">
+                    <span className="text-5xl font-black text-[#FFBE33] md:text-6xl">
+                      {plano.price}
+                    </span>
+                    <span className="mb-2 text-lg font-semibold text-[#FFBE33]/70">
+                      {plano.period}
+                    </span>
+                  </div>
 
-            {/* Preço original riscado */}
-            <p className="mb-1 text-center text-sm font-medium text-white/50 line-through">
-              R$598,80
-            </p>
+                  {plano.installment && (
+                    <p className="mt-4 text-center text-sm text-white/60">
+                      {plano.installment}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </AnimateIn>
+          ))}
+        </div>
 
-            {/* Preço à vista */}
-            <div className="mb-1 flex items-end justify-center gap-2">
-              <span className="text-5xl font-black text-[#FFBE33] md:text-6xl">
-                R$297,00
-              </span>
-              <span className="mb-2 text-lg font-semibold text-[#FFBE33]/70">/ano</span>
-            </div>
-            <p className="mb-6 text-center text-xs text-white/50">à vista</p>
-
-            {/* Divisor */}
-            <div className="mb-6 flex items-center gap-4">
-              <div className="h-px flex-1 bg-white/10" />
-              <span className="text-xs font-semibold text-white/40">ou</span>
-              <div className="h-px flex-1 bg-white/10" />
-            </div>
-
-            {/* Parcelado */}
-            <p className="mb-2 text-center text-sm text-white/60">
-              parcelado no cartão em
-            </p>
-            <div className="flex items-baseline justify-center gap-1.5">
-              <span className="text-sm font-semibold text-white/60">12x de R$</span>
-              <span className="text-4xl font-black text-[#FFBE33]">30,72</span>
-            </div>
-
-          </div>
+        <AnimateIn direction="up" delay={200}>
+          <p className="mt-10 text-base leading-relaxed text-[#444] md:text-lg">
+            No nosso grupo de espera no Whats você tira dúvidas e é avisada
+            assim que as inscrições abrirem.
+          </p>
         </AnimateIn>
-
-        {isWaitlist && (
-          <AnimateIn direction="up" delay={200}>
-            <p className="mt-10 text-base leading-relaxed text-[#444] md:text-lg">
-              No nosso grupo de espera no Whats você poderá garantir uma dessas
-              300 vagas e ter acesso a bônus exclusivos de lançamento.
-            </p>
-          </AnimateIn>
-        )}
 
         <AnimateIn direction="up" delay={250} className="mt-10">
           <a
             href={ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={ctaHref.startsWith("#") ? undefined : "_blank"}
+            rel={ctaHref.startsWith("#") ? undefined : "noopener noreferrer"}
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-2xl bg-[#276678] px-12 py-5 text-base font-extrabold uppercase tracking-wide text-white shadow-[0_8px_40px_rgba(39,102,120,0.35)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_50px_rgba(39,102,120,0.5)] active:scale-[0.98]"
           >
             <span
               aria-hidden
               className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-linear-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
             />
-            <span className="relative z-10">
-              {isWaitlist ? "Entrar no grupo de espera" : "Garantir minha vaga"}
-            </span>
+            <span className="relative z-10">Entrar no grupo de espera</span>
           </a>
         </AnimateIn>
 

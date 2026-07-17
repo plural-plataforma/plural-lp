@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { CHECKOUT_URL } from "@/app/lib/constants";
 import type { Icon } from "@phosphor-icons/react";
 import {
   FileText,
@@ -39,10 +38,11 @@ const features = [
 ];
 
 type HeroSectionProps = {
-  ctaHref?: string;
+  ctaHref: string;
+  secondaryCtaHref?: string;
 };
 
-export function HeroSection({ ctaHref = CHECKOUT_URL }: HeroSectionProps) {
+export function HeroSection({ ctaHref, secondaryCtaHref = "#planos" }: HeroSectionProps) {
   return (
     <section
       className="relative overflow-hidden bg-background"
@@ -158,8 +158,8 @@ export function HeroSection({ ctaHref = CHECKOUT_URL }: HeroSectionProps) {
           <div className="hero-cta flex w-full flex-col gap-3 sm:flex-row">
             <a
               href={ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={ctaHref.startsWith("#") ? undefined : "_blank"}
+              rel={ctaHref.startsWith("#") ? undefined : "noopener noreferrer"}
               className="group relative flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-[#276678] px-6 py-4 text-center text-sm font-extrabold uppercase tracking-wide text-white shadow-[0_6px_24px_rgba(39,102,120,0.35)] transition-all duration-300 hover:bg-[#1b4a57] hover:shadow-[0_8px_32px_rgba(39,102,120,0.5)] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span
@@ -169,7 +169,7 @@ export function HeroSection({ ctaHref = CHECKOUT_URL }: HeroSectionProps) {
               <span className="relative z-10">Quero começar agora</span>
             </a>
             <a
-              href="#planos"
+              href={secondaryCtaHref}
               className="flex flex-1 items-center justify-center rounded-2xl border-2 border-[#276678]/30 px-6 py-4 text-center text-sm font-bold text-[#276678] transition-all hover:border-[#276678] hover:bg-[#276678]/5 active:scale-[0.98]"
             >
               Ver planos

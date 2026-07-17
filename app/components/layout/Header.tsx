@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { ArrowRight, List, X } from "@phosphor-icons/react/dist/ssr";
-import { APP_URL, CHECKOUT_URL } from "@/app/lib/constants";
+import { APP_URL } from "@/app/lib/constants";
 
 const navLinks = [
   { label: "Funcionalidades", href: "#funcionalidades" },
@@ -13,10 +13,10 @@ const navLinks = [
 ] as const;
 
 type HeaderProps = {
-  ctaHref?: string;
+  ctaHref: string;
 };
 
-export function Header({ ctaHref = CHECKOUT_URL }: HeaderProps) {
+export function Header({ ctaHref }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -155,8 +155,8 @@ export function Header({ ctaHref = CHECKOUT_URL }: HeaderProps) {
                 </a>
                 <a
                   href={ctaHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={ctaHref.startsWith("#") ? undefined : "_blank"}
+                  rel={ctaHref.startsWith("#") ? undefined : "noopener noreferrer"}
                   className="group relative hidden items-center gap-2 overflow-hidden rounded-full bg-linear-to-r from-[#276678] to-[#3a8fa5] px-5 py-2.5 text-sm font-extrabold text-white shadow-[0_4px_20px_rgba(39,102,120,0.35)] transition-all duration-300 hover:shadow-[0_6px_28px_rgba(39,102,120,0.45)] active:scale-[0.97] md:flex lg:px-6"
                 >
                   <span
@@ -277,8 +277,8 @@ export function Header({ ctaHref = CHECKOUT_URL }: HeaderProps) {
             </a>
             <a
               href={ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={ctaHref.startsWith("#") ? undefined : "_blank"}
+              rel={ctaHref.startsWith("#") ? undefined : "noopener noreferrer"}
               tabIndex={menuOpen ? undefined : -1}
               onClick={closeMenu}
               className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#FFBE33] py-4 text-base font-black uppercase tracking-wide text-[#183d47] shadow-[0_8px_28px_rgba(0,0,0,0.2)] transition-transform active:scale-[0.98]"
