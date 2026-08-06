@@ -103,7 +103,7 @@ export function PricingSection({ ctaHrefMensal, ctaHrefAnual }: PricingSectionPr
         </AnimateIn>
 
         {/* Cards de preço */}
-        <div className="mb-12 flex flex-col items-stretch justify-center gap-4 sm:items-start sm:flex-row">
+        <div className="mb-12 flex flex-col items-stretch justify-center gap-4 sm:flex-row">
           {plans.map(
             (
               {
@@ -139,8 +139,8 @@ export function PricingSection({ ctaHrefMensal, ctaHrefAnual }: PricingSectionPr
               }`}
             >
               {/* Header — badge integrado na mesma linha */}
-              <div className={`flex items-center justify-between gap-2 px-5 py-3 ${highlight ? "bg-[#A786B6]" : "bg-[#276678]/8"}`}>
-                <span className={`text-sm font-semibold ${highlight ? "text-white" : "text-[#276678]"}`}>
+              <div className="flex items-center justify-between gap-2 bg-[#276678]/8 px-5 py-3">
+                <span className="text-sm font-semibold text-[#276678]">
                   {label}
                 </span>
                 {badge && (
