@@ -1,6 +1,66 @@
 import type { Icon } from "@phosphor-icons/react";
+import Image from "next/image";
 import { BookBookmark, CheckCircle, Users } from "@phosphor-icons/react/dist/ssr";
 import { AnimateIn } from "@/app/components/ui/AnimateIn";
+
+type TeamMember = {
+  avatarSrc: string;
+  name: string;
+  role: string;
+  bio: string;
+  quote: string;
+};
+
+const teamMembers: TeamMember[] = [
+  {
+    avatarSrc: "/team/morgana.jpg",
+    name: "Morgana da Cruz",
+    role: "Especialista em AEE | Pedagoga e Psicopedagoga",
+    bio: "Atua na educação desde 2010 e no Atendimento Educacional Especializado desde 2016. É responsável pelo Descomplique o AEE, formação que já recebeu mais de 2.400 professoras, além de compartilhar conteúdos sobre Educação Especial e AEE com uma comunidade de quase 200 mil pessoas.",
+    quote:
+      "A Plural nasceu daquilo que eu sentia falta na prática: um lugar que ajudasse a professora a organizar, planejar, registrar e acompanhar cada aluno sem transformar a documentação em mais uma sobrecarga.",
+  },
+  {
+    avatarSrc: "/team/sabrina.jpg",
+    name: "Sabrina Ramalho",
+    role: "Especialista em EAD e Tecnologias Educacionais | Gestão e Estratégia",
+    bio: "Mestre em Letras e especialista em Educação a Distância e Tecnologias Educacionais, atua na gestão e no desenvolvimento de projetos digitais voltados à educação. Na Plural, transforma as necessidades pedagógicas identificadas na prática em processos, tecnologia e soluções que funcionem de forma simples no dia a dia.",
+    quote:
+      "Nosso desafio sempre foi fazer a tecnologia trabalhar para a professora e não criar mais uma ferramenta complicada que ela precise aprender a usar.",
+  },
+];
+
+function TeamMemberBio({ member, delay }: { member: TeamMember; delay: number }) {
+  return (
+    <AnimateIn delay={delay} direction="up" className="h-full">
+      <div className="flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_4px_32px_rgba(39,102,120,0.07)] ring-1 ring-[#276678]/10">
+        <div className="relative aspect-[9/10] w-full">
+          <Image
+            src={member.avatarSrc}
+            alt={member.name}
+            fill
+            sizes="(min-width: 768px) 400px, 100vw"
+            quality={100}
+            className="object-cover object-top"
+          />
+        </div>
+        <div className="flex flex-1 flex-col gap-4 p-6 md:p-7">
+          <div>
+            <p className="text-base font-black leading-tight text-[#276678] md:text-lg">{member.name}</p>
+            <p className="mt-0.5 text-xs font-semibold leading-snug text-[#276678]/60 md:text-sm">
+              {member.role}
+            </p>
+          </div>
+          <blockquote className="relative border-l-4 border-[#A786B6] pl-4">
+            <p className="text-sm font-semibold italic leading-relaxed text-[#276678] md:text-base">
+              &ldquo;{member.quote}&rdquo;
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </AnimateIn>
+  );
+}
 
 function StatCard({
   icon: CardIcon,
@@ -75,6 +135,33 @@ export function TeamSection() {
             </div>
           </div>
         </AnimateIn>
+
+        <AnimateIn delay={100} className="mb-10 text-center md:mb-12">
+          <span className="mb-4 inline-block rounded-full bg-[#276678]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#276678]">
+            Quem está por trás da Plural
+          </span>
+          <p className="mx-auto max-w-xl text-lg font-black leading-snug text-[#276678] md:text-xl">
+            A experiência de quem vive o AEE unida à tecnologia para tornar a rotina das
+            professoras mais simples.
+          </p>
+        </AnimateIn>
+
+        <div className="grid gap-5 md:grid-cols-2">
+          {teamMembers.map((member, i) => (
+            <TeamMemberBio key={member.name} member={member} delay={120 + i * 80} />
+          ))}
+        </div>
+
+        <div className="mb-14 grid gap-5 pt-6 md:mb-16 md:grid-cols-2">
+          {teamMembers.map((member, i) => (
+            <AnimateIn key={member.name} delay={160 + i * 80} direction="up">
+              <p className="text-xs font-bold uppercase tracking-wide text-[#276678]/50">
+                Atuação de {member.name.split(" ")[0]}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-[#276678]/70">{member.bio}</p>
+            </AnimateIn>
+          ))}
+        </div>
 
         <AnimateIn delay={120} className="mb-4 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#276678]/55">São mais de:</p>

@@ -6,9 +6,11 @@ import { FeaturesSection } from "@/app/components/sections/FeaturesSection";
 import { ProofSection } from "@/app/components/sections/ProofSection";
 import { WhatPluralDoesSection } from "@/app/components/sections/WhatPluralDoesSection";
 import { TeamSection } from "@/app/components/sections/TeamSection";
+import { InstitutionalSection } from "@/app/components/sections/InstitutionalSection";
 import { TestimonialsSection } from "@/app/components/sections/TestimonialsSection";
 import { PricingSection } from "@/app/components/sections/PricingSection";
 import { LaunchOfferSection } from "@/app/components/sections/LaunchOfferSection";
+import { BlogSection } from "@/app/components/sections/BlogSection";
 import { ObjectionsSection } from "@/app/components/sections/ObjectionsSection";
 import { FAQSection } from "@/app/components/sections/FAQSection";
 import { ClosingCTASection } from "@/app/components/sections/ClosingCTASection";
@@ -45,11 +47,13 @@ export function LandingPageContent({
       <ProofSection />
       <WhatPluralDoesSection />
       <TeamSection />
+      <InstitutionalSection />
       <TestimonialsSection />
       {showPricing && (
         <PricingSection ctaHrefMensal={ctaHrefMensal} ctaHrefAnual={ctaHrefAnual} />
       )}
       {showLaunchOffer && <LaunchOfferSection ctaHref={ctaHrefFinal} />}
+      <BlogSection />
       <ObjectionsSection />
       <FAQSection />
       {showClosingCTA && <ClosingCTASection ctaHref={ctaHrefFinal} />}
