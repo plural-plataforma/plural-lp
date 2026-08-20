@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito, Inter, Lato } from "next/font/google";
 import { MetaPixel } from "@/app/components/analytics/MetaPixel";
+import { WhatsappFloatingButton } from "@/app/components/ui/WhatsappFloatingButton";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -126,6 +127,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <MetaPixel pixelId={metaPixelId} />
         {children}
+        <WhatsappFloatingButton />
       </body>
     </html>
   );

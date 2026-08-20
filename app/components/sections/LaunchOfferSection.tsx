@@ -17,7 +17,7 @@ const planos: PlanoResumo[] = [
   {
     id: "mensal",
     label: "assinatura mensal",
-    price: "R$49,90",
+    price: "R$69,90",
     period: "/mês",
   },
   {
