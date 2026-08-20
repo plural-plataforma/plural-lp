@@ -32,7 +32,7 @@ const plans: Plan[] = [
   {
     id: "mensal",
     label: "Assinatura Mensal",
-    price: "R$ 49,90",
+    price: "R$ 69,90",
     period: "Mensal",
     highlight: true,
     pricePrefix: "Apenas",

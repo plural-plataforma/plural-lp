@@ -107,43 +107,14 @@ export function TeamSection() {
       />
 
       <div className="relative mx-auto max-w-4xl px-6">
-        <AnimateIn className="mb-12 text-center md:mb-16">
-          <span className="mb-4 inline-block rounded-full bg-[#A786B6]/15 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#A786B6]">
-            Quem criou a Plural
-          </span>
-          <h2 className="mb-5 text-3xl font-black leading-[1.12] text-[#276678] md:text-[2.75rem] md:leading-tight">
-            Criada por quem vive o AEE de verdade
-          </h2>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#276678]/75 md:text-lg">
-            A professora Morgana da Cruz conhece exatamente a realidade da sala de recursos.
-          </p>
-        </AnimateIn>
-
-        <AnimateIn delay={80} className="mb-14 md:mb-16">
-          <div className="relative mx-auto max-w-2xl rounded-3xl bg-white/80 p-7 shadow-[0_4px_48px_rgba(39,102,120,0.07)] ring-1 ring-[#276678]/10 backdrop-blur-sm md:p-9">
-            <div
-              className="absolute bottom-8 left-6 top-8 w-1 rounded-full bg-linear-to-b from-[#A786B6] via-[#276678] to-[#FFBE33] md:left-8"
-              aria-hidden
-            />
-            <div className="space-y-5 pl-5 md:pl-6">
-              <p className="text-base font-semibold leading-relaxed text-[#276678] md:text-lg">
-                A Plural não foi criada por programadores que nunca pisaram em uma escola.
-              </p>
-              <p className="text-base font-bold leading-relaxed text-[#276678] md:text-lg">
-                Foi criada por quem vive o AEE no chão da escola.
-              </p>
-            </div>
-          </div>
-        </AnimateIn>
-
-        <AnimateIn delay={100} className="mb-10 text-center md:mb-12">
+        <AnimateIn className="mb-10 text-center md:mb-12">
           <span className="mb-4 inline-block rounded-full bg-[#276678]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#276678]">
             Quem está por trás da Plural
           </span>
-          <p className="mx-auto max-w-xl text-lg font-black leading-snug text-[#276678] md:text-xl">
+          <h2 className="mx-auto max-w-xl text-lg font-black leading-snug text-[#276678] md:text-xl">
             A experiência de quem vive o AEE unida à tecnologia para tornar a rotina das
             professoras mais simples.
-          </p>
+          </h2>
         </AnimateIn>
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -189,7 +160,7 @@ export function TeamSection() {
           <AnimateIn delay={140} direction="up" className="h-full min-w-0">
             <StatCard
               icon={CheckCircle}
-              number="+300"
+              number="+550"
               numberClass="text-[#276678]"
               description="professoras que já utilizam a Plataforma Plural"
               gradientClass="from-white to-[#276678]/12"
