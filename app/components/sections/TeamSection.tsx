@@ -16,7 +16,7 @@ const teamMembers: TeamMember[] = [
     avatarSrc: "/team/morgana.jpg",
     name: "Morgana da Cruz",
     role: "Especialista em AEE | Pedagoga e Psicopedagoga",
-    bio: "Atua na educação desde 2010 e no Atendimento Educacional Especializado desde 2016. É responsável pelo Descomplique o AEE, formação que já recebeu mais de 2.400 professoras, além de compartilhar conteúdos sobre Educação Especial e AEE com uma comunidade de quase 200 mil pessoas.",
+    bio: "Atua na educação desde 2010 e no Atendimento Educacional Especializado desde 2016. É responsável pelo Descomplique o AEE, formação que já recebeu mais de 2.500 professoras, além de compartilhar conteúdos sobre Educação Especial e AEE com uma comunidade de quase 200 mil pessoas.",
     quote:
       "A Plural nasceu daquilo que eu sentia falta na prática: um lugar que ajudasse a professora a organizar, planejar, registrar e acompanhar cada aluno sem transformar a documentação em mais uma sobrecarga.",
   },
@@ -142,7 +142,7 @@ export function TeamSection() {
           <AnimateIn delay={140} direction="up" className="h-full min-w-0">
             <StatCard
               icon={BookBookmark}
-              number="+2.400"
+              number="+2.500"
               numberClass="text-[#A786B6]"
               description="professoras que conhecem o método Descomplique o AEE"
               gradientClass="from-white to-[#A786B6]/12"
@@ -160,7 +160,7 @@ export function TeamSection() {
           <AnimateIn delay={140} direction="up" className="h-full min-w-0">
             <StatCard
               icon={CheckCircle}
-              number="+550"
+              number="+500"
               numberClass="text-[#276678]"
               description="professoras que já utilizam a Plataforma Plural"
               gradientClass="from-white to-[#276678]/12"
